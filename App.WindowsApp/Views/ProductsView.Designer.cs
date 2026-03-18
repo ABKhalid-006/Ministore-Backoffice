@@ -42,7 +42,7 @@
             lblStockStatus = new Label();
             cmbCategory = new ComboBox();
             cmbStockStatus = new ComboBox();
-            txtText = new TextBox();
+            txtSearch = new TextBox();
             lblSearch = new Label();
             pnlGrid = new Panel();
             dgvProducts = new DataGridView();
@@ -166,7 +166,7 @@
             tblFilters.Controls.Add(lblStockStatus, 2, 0);
             tblFilters.Controls.Add(cmbCategory, 1, 1);
             tblFilters.Controls.Add(cmbStockStatus, 2, 1);
-            tblFilters.Controls.Add(txtText, 0, 1);
+            tblFilters.Controls.Add(txtSearch, 0, 1);
             tblFilters.Controls.Add(lblSearch, 0, 0);
             tblFilters.Dock = DockStyle.Fill;
             tblFilters.Location = new Point(10, 10);
@@ -211,6 +211,7 @@
             cmbCategory.Name = "cmbCategory";
             cmbCategory.Size = new Size(265, 28);
             cmbCategory.TabIndex = 3;
+            cmbCategory.SelectedValueChanged += cmbCategory_SelectedValueChanged;
             // 
             // cmbStockStatus
             // 
@@ -221,15 +222,17 @@
             cmbStockStatus.Name = "cmbStockStatus";
             cmbStockStatus.Size = new Size(249, 28);
             cmbStockStatus.TabIndex = 4;
+            cmbStockStatus.SelectedIndexChanged += cmbStockStatus_SelectedIndexChanged;
             // 
-            // txtText
+            // txtSearch
             // 
-            txtText.Dock = DockStyle.Fill;
-            txtText.Location = new Point(2, 75);
-            txtText.Margin = new Padding(2, 3, 2, 3);
-            txtText.Name = "txtText";
-            txtText.Size = new Size(312, 27);
-            txtText.TabIndex = 5;
+            txtSearch.Dock = DockStyle.Fill;
+            txtSearch.Location = new Point(2, 75);
+            txtSearch.Margin = new Padding(2, 3, 2, 3);
+            txtSearch.Name = "txtSearch";
+            txtSearch.Size = new Size(312, 27);
+            txtSearch.TabIndex = 5;
+            txtSearch.TextChanged += txtSearch_TextChanged;
             // 
             // lblSearch
             // 
@@ -363,7 +366,7 @@
         private System.Windows.Forms.Label lblStockStatus;
         private System.Windows.Forms.ComboBox cmbCategory;
         private System.Windows.Forms.ComboBox cmbStockStatus;
-        private System.Windows.Forms.TextBox txtText;
+        private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Panel pnlGrid;
         private System.Windows.Forms.DataGridView dgvProducts;
         private DataGridViewTextBoxColumn colid;

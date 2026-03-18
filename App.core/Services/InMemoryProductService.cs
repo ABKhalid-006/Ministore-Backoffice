@@ -21,19 +21,41 @@ namespace App.core.Services
 
         public Product Add(Product product)
         {
-            throw new NotImplementedException();
+            if(product != null)
+            {
+                product.Id = GenerateId();
+                _products.Add(product);
+            }
+            return product;
         }
         public bool Update(Product product)
         {
+            if (product != null)
+            {
+                Product? Existing = _products.Find(p => p.Id == product.Id);
+                if (Existing == null) return false;
+
+                Existing.Name = product.Name;
+                Existing.Category = product.Category;
+                Existing.Price = product.Price;
+                Existing.Status = product.Status;
+                Existing.Stock = product.Stock;
+
+                return true;
+
+            }
             return false;
         }
         public bool Delete(string id)
         {
-            return false;
+            Product prodToBeDeleted = GetById(id);
+            _products.Remove(prodToBeDeleted);
+            return true;
         }
-        public Product GetById(string id)
+        public Product? GetById(string id)
         {
-            throw new NotImplementedException();
+            Product? prod = _products.Find(p => p.Id == id);
+            return prod;
         }
         public List<Product> GetAll()
         {
@@ -41,7 +63,21 @@ namespace App.core.Services
         }
         public List<Product> Search(string text, ProductCategoryEnum? category, ProductStatusEnum? status)
         {
-            throw new NotImplementedException();
+            //LINQ
+            List<Product> _filtered = _products.ToList();
+            _filtered = _filtered.Where(p => p.Name.Contains(text)).ToList();
+
+            if (category is not null)
+            {
+                _filtered = _filtered.Where(p => p.Category == category).ToList();
+            }
+
+            if (status is not null)
+            {
+                _filtered = _filtered.Where(p => p.Status == status).ToList();
+            }
+
+            return _filtered;
 
         }
 
