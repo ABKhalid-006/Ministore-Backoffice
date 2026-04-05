@@ -23,10 +23,10 @@ namespace App.WindowsApp.Forms
         private readonly Color NavActiveFore = Color.Black;
 
 
-       InMemoryProductService _productService = new InMemoryProductService();
+        InMemoryProductService _productService = new InMemoryProductService();
+        InMemoryCustomerService _customerService = new InMemoryCustomerService();
 
-
-      //  private readonly IProductService _productService = new InMemoryProductService();
+        //  private readonly IProductService _productService = new InMemoryProductService();
         private readonly Dictionary<Type, UserControl> _views = new Dictionary<Type, UserControl>();
         public MainForm()
         {
@@ -50,66 +50,29 @@ namespace App.WindowsApp.Forms
             _activeNavButton.ForeColor = NavActiveFore;
             _activeNavButton.Font = new Font(_activeNavButton.Font, FontStyle.Bold);
         }
-        private void panelContent_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void panelHeader_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void panelLeft_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void flpnav_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void flpleft_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void btnSettings_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void flpRight_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
+        
 
         private void btnDashboard_Click(object sender, EventArgs e)
         {
             ShowView(() => new DashboardView());
 
-         }
+        }
 
         private void btnProducts_Click(object sender, EventArgs e)
         {
-            
-            
+
+
             ShowView(() => new ProductsView(_productService));
         }
 
-        private void ShowView<T>(Func<T> factory) where T:UserControl
+        
+
+        private void btnCustomer_Click(object sender, EventArgs e)
         {
-            var key = typeof(T);
-            if(!_views.TryGetValue(key, out var view))
-            {
-                view = factory();
-                _views[key] = view;
-                view.Dock = DockStyle.Fill;  //enum read karo
-            }
-            pnlContent.Controls.Clear();
-            pnlContent.Controls.Add(view);
+            ShowView(() => new CustomerView(_customerService));
         }
+
+
         private void btnOrder_Click(object sender, EventArgs e)
         {
 
@@ -130,9 +93,26 @@ namespace App.WindowsApp.Forms
 
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void ShowView<T>(Func<T> factory) where T : UserControl
         {
-
+            var key = typeof(T);
+            if (!_views.TryGetValue(key, out var view))
+            {
+                view = factory();
+                _views[key] = view;
+                view.Dock = DockStyle.Fill;  //enum read karo
+            }
+            pnlContent.Controls.Clear();
+            pnlContent.Controls.Add(view);
         }
+
+
+
+
+
+        
+
+
+
     }
 }

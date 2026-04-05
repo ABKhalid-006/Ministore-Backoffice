@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             pnlHeader = new Panel();
             flpRight = new FlowLayoutPanel();
             picUserIcon = new PictureBox();
@@ -47,6 +48,7 @@
             pnlContent = new Panel();
             statusStrip1 = new StatusStrip();
             toolStripStatusLabel1 = new ToolStripStatusLabel();
+            btnCustomer = new Button();
             pnlHeader.SuspendLayout();
             flpRight.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picUserIcon).BeginInit();
@@ -68,7 +70,7 @@
             pnlHeader.Name = "pnlHeader";
             pnlHeader.Size = new Size(834, 60);
             pnlHeader.TabIndex = 0;
-            pnlHeader.Paint += panelHeader_Paint;
+            //pnlHeader.Paint += panelHeader_Paint;
             // 
             // flpRight
             // 
@@ -81,7 +83,7 @@
             flpRight.Name = "flpRight";
             flpRight.Size = new Size(178, 60);
             flpRight.TabIndex = 1;
-            flpRight.Paint += flpRight_Paint;
+            //flpRight.Paint += flpRight_Paint;
             // 
             // picUserIcon
             // 
@@ -117,7 +119,7 @@
             flpleft.Name = "flpleft";
             flpleft.Size = new Size(178, 60);
             flpleft.TabIndex = 0;
-            flpleft.Paint += flpleft_Paint;
+            //flpleft.Paint += flpleft_Paint;
             // 
             // pblogo
             // 
@@ -141,7 +143,7 @@
             lblMiniStore.Size = new Size(80, 20);
             lblMiniStore.TabIndex = 1;
             lblMiniStore.Text = "Mini Store";
-            lblMiniStore.Click += label1_Click;
+            //lblMiniStore.Click += label1_Click;
             // 
             // panelLeft
             // 
@@ -153,12 +155,13 @@
             panelLeft.Name = "panelLeft";
             panelLeft.Size = new Size(178, 573);
             panelLeft.TabIndex = 1;
-            panelLeft.Paint += panelLeft_Paint;
+            //panelLeft.Paint += panelLeft_Paint;
             // 
             // flpnav
             // 
             flpnav.Controls.Add(btnDashboard);
             flpnav.Controls.Add(btnProducts);
+            flpnav.Controls.Add(btnCustomer);
             flpnav.Controls.Add(btnOrder);
             flpnav.Controls.Add(btnReports);
             flpnav.Controls.Add(btnSync);
@@ -172,7 +175,7 @@
             flpnav.Name = "flpnav";
             flpnav.Size = new Size(178, 573);
             flpnav.TabIndex = 1;
-            flpnav.Paint += flpnav_Paint;
+            //flpnav.Paint += flpnav_Paint;
             // 
             // btnDashboard
             // 
@@ -216,7 +219,7 @@
             btnOrder.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnOrder.Image = Properties.Resources.order;
             btnOrder.ImageAlign = ContentAlignment.MiddleLeft;
-            btnOrder.Location = new Point(2, 135);
+            btnOrder.Location = new Point(2, 201);
             btnOrder.Margin = new Padding(2, 3, 2, 3);
             btnOrder.Name = "btnOrder";
             btnOrder.Padding = new Padding(9, 0, 0, 0);
@@ -233,7 +236,7 @@
             btnReports.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnReports.Image = Properties.Resources.reports;
             btnReports.ImageAlign = ContentAlignment.MiddleLeft;
-            btnReports.Location = new Point(2, 201);
+            btnReports.Location = new Point(2, 267);
             btnReports.Margin = new Padding(2, 3, 2, 3);
             btnReports.Name = "btnReports";
             btnReports.Padding = new Padding(9, 0, 0, 0);
@@ -250,7 +253,7 @@
             btnSync.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnSync.Image = Properties.Resources.ico_sync;
             btnSync.ImageAlign = ContentAlignment.MiddleLeft;
-            btnSync.Location = new Point(2, 267);
+            btnSync.Location = new Point(2, 333);
             btnSync.Margin = new Padding(2, 3, 2, 3);
             btnSync.Name = "btnSync";
             btnSync.Padding = new Padding(9, 0, 0, 0);
@@ -267,7 +270,7 @@
             btnLogs.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnLogs.Image = Properties.Resources.log;
             btnLogs.ImageAlign = ContentAlignment.MiddleLeft;
-            btnLogs.Location = new Point(2, 333);
+            btnLogs.Location = new Point(2, 399);
             btnLogs.Margin = new Padding(2, 3, 2, 3);
             btnLogs.Name = "btnLogs";
             btnLogs.Padding = new Padding(9, 0, 0, 0);
@@ -284,7 +287,7 @@
             btnSettings.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnSettings.Image = Properties.Resources.setting;
             btnSettings.ImageAlign = ContentAlignment.MiddleLeft;
-            btnSettings.Location = new Point(2, 399);
+            btnSettings.Location = new Point(2, 465);
             btnSettings.Margin = new Padding(2, 3, 2, 3);
             btnSettings.Name = "btnSettings";
             btnSettings.Padding = new Padding(9, 0, 0, 0);
@@ -292,7 +295,7 @@
             btnSettings.TabIndex = 6;
             btnSettings.Text = "Settings";
             btnSettings.UseVisualStyleBackColor = true;
-            btnSettings.Click += btnSettings_Click;
+//            btnSettings.Click += btnSettings_Click;
             // 
             // pnlContent
             // 
@@ -303,7 +306,7 @@
             pnlContent.Name = "pnlContent";
             pnlContent.Size = new Size(656, 573);
             pnlContent.TabIndex = 2;
-            pnlContent.Paint += panelContent_Paint;
+            //pnlContent.Paint += panelContent_Paint;
             // 
             // statusStrip1
             // 
@@ -322,6 +325,24 @@
             toolStripStatusLabel1.Name = "toolStripStatusLabel1";
             toolStripStatusLabel1.Size = new Size(51, 20);
             toolStripStatusLabel1.Text = "Ready";
+            // 
+            // btnCustomer
+            // 
+            btnCustomer.BackgroundImageLayout = ImageLayout.Zoom;
+            btnCustomer.FlatAppearance.BorderSize = 0;
+            btnCustomer.FlatStyle = FlatStyle.Flat;
+            btnCustomer.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnCustomer.Image = (Image)resources.GetObject("btnCustomer.Image");
+            btnCustomer.ImageAlign = ContentAlignment.MiddleLeft;
+            btnCustomer.Location = new Point(2, 135);
+            btnCustomer.Margin = new Padding(2, 3, 2, 3);
+            btnCustomer.Name = "btnCustomer";
+            btnCustomer.Padding = new Padding(9, 0, 0, 0);
+            btnCustomer.Size = new Size(170, 60);
+            btnCustomer.TabIndex = 7;
+            btnCustomer.Text = "Customer";
+            btnCustomer.UseVisualStyleBackColor = true;
+            btnCustomer.Click += btnCustomer_Click;
             // 
             // MainForm
             // 
@@ -375,5 +396,6 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.Label lblMiniStore;
+        private Button btnCustomer;
     }
 }

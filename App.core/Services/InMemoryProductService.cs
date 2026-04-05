@@ -19,7 +19,7 @@ namespace App.core.Services
         }
 
 
-        public Product Add(Product product)
+         Product IProductService.Add(Product product)
         {
             if(product != null)
             {
@@ -28,7 +28,7 @@ namespace App.core.Services
             }
             return product;
         }
-        public bool Update(Product product)
+        bool IProductService.Update(Product product)
         {
             if (product != null)
             {
@@ -46,22 +46,22 @@ namespace App.core.Services
             }
             return false;
         }
-        public bool Delete(string id)
+        bool IProductService.Delete(string id)
         {
             Product prodToBeDeleted = GetById(id);
             _products.Remove(prodToBeDeleted);
             return true;
         }
-        public Product? GetById(string id)
+        Product? IProductService.GetById(string id)
         {
             Product? prod = _products.Find(p => p.Id == id);
             return prod;
         }
-        public List<Product> GetAll()
+         List<Product> IProductService.GetAll()
         {
             return _products.OrderBy(p => p.Name).ToList();
         }
-        public List<Product> Search(string text, ProductCategoryEnum? category, ProductStatusEnum? status)
+        List<Product> IProductService.Search(string text, ProductCategoryEnum? category, ProductStatusEnum? status)
         {
             //LINQ
             List<Product> _filtered = _products.ToList();

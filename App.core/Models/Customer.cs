@@ -17,7 +17,7 @@ namespace App.core.Models
         public Customer()
         {
 
-            Id = Guid.NewGuid().ToString("N").Substring(0, 9);
+            Id = "C-" + Guid.NewGuid().ToString("N").Substring(0, 9);
 
         }
     }

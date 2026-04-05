@@ -259,6 +259,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.White;
             ClientSize = new Size(688, 515);
             Controls.Add(flpBottomPF);
             Controls.Add(tlpProductform);
