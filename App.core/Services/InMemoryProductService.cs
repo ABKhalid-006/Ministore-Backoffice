@@ -48,7 +48,9 @@ namespace App.core.Services
         }
         bool IProductService.Delete(string id)
         {
-            Product prodToBeDeleted = GetById(id);
+            Product? prodToBeDeleted = ((IProductService)this).GetById(id);
+            if (prodToBeDeleted == null) return false;
+
             _products.Remove(prodToBeDeleted);
             return true;
         }

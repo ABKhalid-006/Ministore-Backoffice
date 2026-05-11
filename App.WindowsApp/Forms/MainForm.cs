@@ -9,11 +9,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using App.core.Services;
+using App.core.Contracts;
 using App.WindowsApp.Views;
+using System.Configuration;
 namespace App.WindowsApp.Forms
 {
     public partial class MainForm : Form
     {
+
+
         private Button _activeNavButton;
 
         private readonly Color NavNormalBack = Color.FromArgb(244, 244, 255);
@@ -22,15 +26,16 @@ namespace App.WindowsApp.Forms
         private readonly Color NavNormalFore = Color.Black;
         private readonly Color NavActiveFore = Color.Black;
 
+        string connectionString;
+        IProductService _productService;
 
-        InMemoryProductService _productService = new InMemoryProductService();
         InMemoryCustomerService _customerService = new InMemoryCustomerService();
-
-        //  private readonly IProductService _productService = new InMemoryProductService();
         private readonly Dictionary<Type, UserControl> _views = new Dictionary<Type, UserControl>();
         public MainForm()
         {
             InitializeComponent();
+            connectionString = ConfigurationManager.ConnectionStrings["MiniStoreDB"].ConnectionString;
+            _productService = new DbProductServices(connectionString);
         }
         private void SetActiveNavButton(Button btn)
         {
