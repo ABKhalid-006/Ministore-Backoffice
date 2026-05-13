@@ -28,14 +28,15 @@ namespace App.WindowsApp.Forms
 
         string connectionString;
         IProductService _productService;
-
-        InMemoryCustomerService _customerService = new InMemoryCustomerService();
+        ICustomerService _customerService;
+        
         private readonly Dictionary<Type, UserControl> _views = new Dictionary<Type, UserControl>();
         public MainForm()
         {
             InitializeComponent();
             connectionString = ConfigurationManager.ConnectionStrings["MiniStoreDB"].ConnectionString;
             _productService = new DbProductServices(connectionString);
+            _customerService = new DbCustomerService(connectionString);
         }
         private void SetActiveNavButton(Button btn)
         {

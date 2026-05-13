@@ -89,7 +89,16 @@ namespace App.WindowsApp.Views
         }
         private void tsbDelete_Click(object sender, EventArgs e)
         {
-
+            var selectedProduct = _dgvbindingSource.Current as Product;
+            if (selectedProduct != null)
+            {
+                var confirm = MessageBox.Show("Are you sure you want to delete this customer?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (confirm == DialogResult.Yes)
+                {
+                    _service.Delete(selectedProduct.Id);
+                    RefreshGrid();
+                }
+            }
         }
 
         private void tsbRefresh_Click(object sender, EventArgs e)

@@ -8,9 +8,9 @@ namespace App.core.Contracts
     {
         List<Customer> GetAll();
         Customer GetById(string id);
-        void Add (Customer customer);
-        void Update (Customer customer);
-        void Delete (string id);
+        Customer Add (Customer customer);
+        Customer Update (Customer customer);
+        Customer Delete (string id);
 
         List<Customer> Search(string query);
 
